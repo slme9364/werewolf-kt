@@ -18,4 +18,8 @@ class Hunter : Role {
         user.isProtected = true
         return user.name + "を護衛します"
     }
+
+    override fun toString(): String {
+        return "狩人"
+    }
 }
