@@ -20,4 +20,8 @@ class Psychic : Role {
         }
         return user.name + "は" + judge + "です"
     }
+
+    override fun toString(): String {
+        return "霊媒師"
+    }
 }

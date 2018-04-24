@@ -15,7 +15,12 @@ class Wolf : Role {
     }
 
     private fun kill(user: User): String {
+        if (user.role.isWolf) return user.name + "は狼です"
         user.isKillTarget = true
         return user.name + "を殺害対象とします"
+    }
+
+    override fun toString(): String {
+        return "人狼"
     }
 }

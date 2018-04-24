@@ -12,4 +12,8 @@ class Citizen : Role {
     override fun action(user: User): String {
         return ""
     }
+
+    override fun toString(): String {
+        return "市民"
+    }
 }
