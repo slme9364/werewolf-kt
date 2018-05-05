@@ -15,7 +15,7 @@ abstract class AbstractGame {
         java.util.Collections.shuffle(config.nameList)
         java.util.Collections.shuffle(config.roleList)
 
-        for (i in 0..config.nameList.size) {
+        for (i in 0..(config.nameList.size - 1)) {
             val newUser = User(config.nameList[i], config.roleList[i])
             allMembers.add(newUser)
             aliveMembers.add(newUser)
