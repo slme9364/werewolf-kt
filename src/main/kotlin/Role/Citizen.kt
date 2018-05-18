@@ -9,8 +9,14 @@ class Citizen : Role {
     override val team: Team
         get() = Team.Citizen
 
-    override fun action(user: User): String {
-        return ""
+    override var doneAction: Boolean = false
+
+    override fun clear() {
+        doneAction = false
+    }
+
+    override fun action(user: User): Boolean {
+        return false
     }
 
     override fun toString(): String {
