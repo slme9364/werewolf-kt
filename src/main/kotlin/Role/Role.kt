@@ -6,5 +6,7 @@ import  Team
 interface Role {
     val isWolf: Boolean
     val team: Team
-    fun action(user: User): String
+    var doneAction: Boolean
+    fun action(user: User): Boolean
+    fun clear()
 }

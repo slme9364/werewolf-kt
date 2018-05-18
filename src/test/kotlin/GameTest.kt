@@ -45,10 +45,12 @@ class GameTest {
 
         game.aliveMembers[wolf_id].role.action(game.aliveMembers[citizen_id])
         game.aliveMembers[hunter_id].role.action(game.aliveMembers[citizen_id])
-        val fortune_result = game.aliveMembers[fortune_id].role.action(game.aliveMembers[wolf_id])
+        var fortune_result = ""
+        if (!game.aliveMembers[fortune_id].role.action(game.aliveMembers[wolf_id])) {
+            assert(false)
+        }
 
         assert(game.aliveMembers[citizen_id].isKillTarget)
         assert(game.aliveMembers[citizen_id].isProtected)
-        assertEquals(fortune_result, game.aliveMembers[wolf_id].name + "は黒です")
     }
 }
