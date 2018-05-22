@@ -1,5 +1,6 @@
 package Role
 
+import Exceptions.ActionException
 import Team
 import User
 
@@ -9,16 +10,20 @@ class Psychic : Role {
     override val team: Team
         get() = Team.Citizen
 
-    override fun action(user: User):String {
+    override var doneAction: Boolean = false
+
+    override fun action(user: User): Boolean {
         return wasWolf(user)
     }
 
-    private fun wasWolf(user: User): String {
-        var judge = "白"
-        if (user.role!!.isWolf) {
-            judge = "黒"
-        }
-        return user.name + "は" + judge + "です"
+    override fun clear() {
+        doneAction = false
+    }
+
+    private fun wasWolf(user: User): Boolean {
+        if (doneAction) throw ActionException()
+        if (!user.role.isWolf) return false
+        return true
     }
 
     override fun toString(): String {

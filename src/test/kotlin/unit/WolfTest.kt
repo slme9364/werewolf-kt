@@ -1,5 +1,6 @@
 package unit
 
+import Exceptions.IsWolfException
 import Role.Wolf
 import Role.Citizen
 import User
@@ -12,10 +13,15 @@ class WolfTest {
     @Test
     fun wolfActionTest() {
         val target = User("target", Citizen())
-        assertEquals("targetを殺害対象とします", wolf.role.action(target))
+        assertEquals(true, wolf.role.action(target))
         assert(target.isKillTarget)
-        val wolfTarget = User("friend", Wolf())
-        assertEquals("friendは狼です", wolf.role.action(wolfTarget))
-        assertFalse(wolfTarget.isKillTarget)
+        wolf.role.clear()
+        try {
+            val wolfTarget = User("friend", Wolf())
+            wolf.role.action(wolfTarget)
+        }
+        catch (e: IsWolfException) {
+            assert(true)
+        }
     }
 }

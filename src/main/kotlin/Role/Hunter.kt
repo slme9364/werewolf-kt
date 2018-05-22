@@ -1,5 +1,6 @@
 package Role
 
+import Exceptions.ActionException
 import User
 import Team
 
@@ -7,16 +8,24 @@ class Hunter : Role {
     override val team: Team
         get() = Team.Citizen
 
-    override public val isWolf: Boolean
+    override val isWolf: Boolean
         get() = false
 
-    override public fun action(user: User): String {
+    override var doneAction: Boolean = false
+
+    override fun clear() {
+        doneAction = false
+    }
+
+    override public fun action(user: User): Boolean {
         return protect(user)
     }
 
-    private fun protect(user: User): String {
+    private fun protect(user: User): Boolean {
+        if (doneAction) throw ActionException()
         user.isProtected = true
-        return user.name + "を護衛します"
+        doneAction = true
+        return true
     }
 
     override fun toString(): String {

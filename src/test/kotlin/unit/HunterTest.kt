@@ -12,7 +12,7 @@ class HunterTest {
     @Test
     fun hunterActionTest() {
         val protectedUser = User("protectedUser", Citizen())
-        assertEquals("protectedUserを護衛します", hunter.role.action(protectedUser))
+        assertEquals(true, hunter.role.action(protectedUser))
         assert(protectedUser.isProtected)
     }
 }

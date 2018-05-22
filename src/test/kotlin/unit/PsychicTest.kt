@@ -13,8 +13,9 @@ class PsychicTest {
     @Test
     fun psychicActionTest() {
         val wolf = User("wolf", Wolf())
-        assertEquals("wolfは黒です", psychic.role.action(wolf))
+        assertEquals(true, psychic.role.action(wolf))
+        psychic.role.clear()
         val citizen = User("citizen", Citizen())
-        assertEquals("citizenは白です", psychic.role.action(citizen))
+        assertEquals(false, psychic.role.action(citizen))
     }
 }

@@ -13,8 +13,9 @@ class FortuneTellerTest {
     @Test
     fun fortuneTellerActionTest() {
         val wolf = User("wolf", Wolf())
-        assertEquals("wolfは黒です", fortuneTeller.role.action(wolf))
+        assertEquals(true, fortuneTeller.role.action(wolf))
+        fortuneTeller.role.clear()
         val citizen = User("citizen", Citizen())
-        assertEquals("citizenは白です", fortuneTeller.role.action(citizen))
+        assertEquals(false, fortuneTeller.role.action(citizen))
     }
 }
