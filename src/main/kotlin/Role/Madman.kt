@@ -9,8 +9,13 @@ class Madman : Role{
     override val team: Team
         get() = Team.Wolf
 
-    override fun action(user: User): String {
-        return ""
+    override var doneAction: Boolean = false
+
+    override fun clear() {
+    }
+
+    override fun action(user: User): Boolean {
+        return false
     }
 
     override fun toString(): String {

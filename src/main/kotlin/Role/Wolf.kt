@@ -1,5 +1,7 @@
 package Role
 
+import Exceptions.ActionException
+import Exceptions.IsWolfException
 import User
 import Team
 
@@ -7,17 +9,25 @@ class Wolf : Role {
     override val team: Team
         get() = Team.Wolf
 
-    override public val isWolf: Boolean
+    override val isWolf: Boolean
         get() = true
 
-    override public fun action(user: User): String {
+    override var doneAction: Boolean = false
+
+    override public fun action(user: User): Boolean {
         return kill(user)
     }
 
-    private fun kill(user: User): String {
-        if (user.role.isWolf) return user.name + "は狼です"
+    override fun clear() {
+        doneAction = false
+    }
+
+    private fun kill(user: User): Boolean {
+        if (user.role.isWolf) throw IsWolfException()
+        if (doneAction) throw ActionException()
         user.isKillTarget = true
-        return user.name + "を殺害対象とします"
+        doneAction = true
+        return true
     }
 
     override fun toString(): String {
