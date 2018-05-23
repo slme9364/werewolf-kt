@@ -13,7 +13,7 @@ write build.gradle
 ```
 repositories {
   ...
-  maven { url 'https://slme.github.io/werewolf-kt'}
+  maven { url 'https://slme9364.github.io/werewolf-kt'}
 }
 
 dependencies {
