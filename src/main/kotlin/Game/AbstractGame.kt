@@ -7,7 +7,6 @@ abstract class AbstractGame {
     val aliveMembers = arrayListOf<User>()
     private var config: Configuration? = null
 
-
     abstract fun run()
 
     fun initialize(config: Configuration) {
