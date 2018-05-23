@@ -21,4 +21,8 @@ abstract class AbstractGame {
             aliveMembers.add(newUser)
         }
     }
+
+    fun getConfig(): Configuration? {
+        return config
+    }
 }
