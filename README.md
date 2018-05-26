@@ -7,7 +7,7 @@ This library become GameMaster of werewolf.
 This library implemented by Kotlin. So, you can make Android Apps which can become GameMaster of werewolf.  
 
 
-## Usage  
+## Install  
 write build.gradle  
 
 ```
